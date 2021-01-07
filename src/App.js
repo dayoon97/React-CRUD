@@ -4,25 +4,32 @@ import './App.css';
 
 class App extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            username:null
-        };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName:null,
+      userNo:null
+    };
+  }
 
-    componentDidMount() {
-      fetch('api/group')
-          .then(res=>res.json())
-          .then(data=>this.setState({username:data.username}));
+  componentDidMount() {
+    fetch('api/list')
+        .then(res=>res.json())
+        .then(data=>this.setState({
+          userName:data.userName,
+          userNo:data.userNo
+        }))
+        console.log(this.userName);
+        console.log(this.Name);
+        console.log(this.userNo);
   }
 
   render() {
-    const {username} = this.state;
+    const {userName, userNo} = this.state;
     return (
         <div className="App">
           <header className="App-header">
-            {username ? `Hello ${username}` : 'Hello World'}
+          {userName ? `Hello ${userName}` : 'Hello World'}
           </header>
         </div>
     );

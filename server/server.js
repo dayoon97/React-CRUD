@@ -13,3 +13,7 @@ app.use('/api', route); // app.use('/api', (req, res)=> res.json({username:'brya
 app.listen(port, ()=>{
     console.log(`express is running on ${port}`);
 })
+
+
+console.log(route);
+app.get('/api', route); //add 페이지 불러오기
