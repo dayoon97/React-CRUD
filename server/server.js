@@ -16,4 +16,4 @@ app.listen(port, ()=>{
 
 
 console.log(route);
-app.get('/api', route); //add 페이지 불러오기
+app.get('/api', route); 
