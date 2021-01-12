@@ -41,6 +41,8 @@ class App extends React.Component {
                 {user}
               </tbody>
             </table>
+            <button className="Addbtn">추가하기</button>
+            <button className="Delbtn">삭제하기</button>
         </div>
     );
   };

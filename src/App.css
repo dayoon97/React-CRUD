@@ -45,3 +45,16 @@
 th, td {
   border: 1px solid #444444;
 }
+.Addbtn{
+  margin-top: 20px;
+  width: 100px;
+  height: 30px;
+  float: left;
+}
+.Delbtn{
+  margin-top: 20px;
+  margin-left: 10px;
+  width: 100px;
+  height: 30px;
+  float: left;
+}
