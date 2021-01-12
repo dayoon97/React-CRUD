@@ -19,18 +19,6 @@ connection.connect();
 
 connection.query('SELECT * from Node_db.member', (error, rows, fields) => {
   if (error) throw error;
-  // var userName = [];
-  // var userNo = [];
-  // var userPhone = [];
-  // var userGender = [];
-  // for(var i =0;i<rows.length;i++){
-  //   userName += rows[i].Name;
-  //   userName += ',';
-  //   userNo += rows[i].No;
-  //   userPhone += rows[i].Phone;
-  //   userGender += rows[i].Gender; 
-  // };
-  //console.log(userName);
   router.get('/list', (req, res)=>res.json({rows}));
 });
 

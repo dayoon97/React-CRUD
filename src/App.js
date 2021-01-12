@@ -43,8 +43,7 @@ class App extends React.Component {
             </table>
         </div>
     );
-    ;
-  }
+  };
 }
 
 export default App;
