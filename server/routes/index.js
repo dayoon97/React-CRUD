@@ -25,11 +25,12 @@ connection.query('SELECT * from Node_db.member', (error, rows, fields) => {
   // var userGender = [];
   // for(var i =0;i<rows.length;i++){
   //   userName += rows[i].Name;
+  //   userName += ',';
   //   userNo += rows[i].No;
   //   userPhone += rows[i].Phone;
   //   userGender += rows[i].Gender; 
   // };
-  //console.log(rows);
+  //console.log(userName);
   router.get('/list', (req, res)=>res.json({rows}));
 });
 

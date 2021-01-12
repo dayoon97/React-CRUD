@@ -38,6 +38,10 @@
 }
 
 .tbl {
-  width: 200px;
+  width: 300px;
   border: 1px solid gray;
+   border-collapse: collapse;
+}
+th, td {
+  border: 1px solid #444444;
 }
