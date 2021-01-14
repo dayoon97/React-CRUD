@@ -49,16 +49,6 @@
   }
 }
 
-.tbl {
-  width: 300px;
-  border-collapse: collapse;
-}
-th, td {
-  border: 1px solid #fafafa;
-}
-.tbl>tbody>tr:nth-child(2n){
-  background-color: rgb(241, 241, 241);
-}
 
 .Addbtn:hover, .Delbtn:hover, .Updbtn:hover, .submit-btn:hover {
   background-position: right center;
@@ -191,8 +181,13 @@ th, td {
   -ms-transform: rotate(3deg);
   transform: rotate(3deg);
 }
-.name-input{
-  float: left;
+.nameinput {
+  border: none;
+  width: 40px;
+  height: 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  outline: none;
 }
 
 .phone-input{
@@ -225,7 +220,7 @@ th, td {
   height: 30px;
 }
 
-.user-area{
+.user-area {
   margin-top: 3px;
   width: 300px;
   height: 50px;
@@ -234,7 +229,6 @@ th, td {
   text-transform: uppercase;
   transition: 0.5s;
   background-size: 200% auto;
-  color: black;
  /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
   border: 0;
   box-shadow: 0 0 20px #eee;
@@ -253,6 +247,7 @@ th, td {
   width: 50px;
   height: 50px;
   float: left;
+  color: rgb(163, 122, 122);
 }
 
 .user-name{

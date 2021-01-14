@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap');
 
+::-moz-selection {
+  background: rgb(255, 89, 89);
+  color: #fff;
+}
+::selection {
+  background: rgb(255, 89, 89);
+  color: #fff;
+}
+
+
 body {
   margin: 0;
   font-family: 'Noto Sans KR', sans-serif, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

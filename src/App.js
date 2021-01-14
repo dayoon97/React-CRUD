@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './App.css';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
+
+var nameValue = 0;
 
 class App extends React.Component {
-  
+
   constructor() {
     super();
     this.state = {
@@ -34,33 +34,42 @@ class App extends React.Component {
     }));
   }
 
+  updateName = (e) => {
+    const nameId = e.target.id;
+
+    nameValue = nameId;
+
+    
+
+
+    this.setState(state => ({
+      setName: <div className="user-name" id={nameId}><span className="name-list"><input type="text" size="5" className="nameinput"/></span></div>
+    }));
+    
+  }
+
+
 
   render() {
     
+    const userName1 = this.state.setName;
+
     const user = this.state.users.map((item, index) => {
-      // return <tr key={index}><td><input type="checkbox"/></td><td>{item.No}</td><td>{item.Name}</td><td>{item.Phone}</td><td>{item.Gender}</td></tr>
-      return <div className="user-area"><div className="user-no" key={index}><span className="cir">{item.No}</span></div><div className="user-name"><span className="name-list">{item.Name}</span></div><div className="user-phone">{item.Phone}</div><div className="user-gender">{item.Gender === 'F' ? '👩' : '👨' }</div></div>
+      return <div className="user-area"><div className="user-no" key={index}><span className="cir">{item.No}</span></div>
+      {nameValue === "name" + (index + 1) ? userName1 : <div className="user-name" id={"name" + (index + 1)} onClick={this.updateName}><span className="name-list">{item.Name}</span></div> }
+
+      <div className="user-phone">{item.Phone}</div><div className="user-gender">{item.Gender === 'F' ? '👩' : '👨' }</div></div>
     });
+
+    
+
 
     return (
         <div className="App">
           <div className="title-area"><h1>ReactJS CRUD</h1></div>
           <div className="cont-area">
           <div className="tbl-area">
-            {/* <div className="user-area"><div className="user-no"><span className="cir">1</span></div><div className="user-name"></div><div className="user-phone"></div><div className="user-gender">👩</div></div> */}
             {user}
-            {/* <table className="tbl">
-              <tr>
-                <th></th>
-                <th>번호</th>
-                <th>이름</th>
-                <th>전화번호</th>
-                <th>성별</th>
-              </tr>
-              <tbody>
-                {user}
-              </tbody>
-            </table> */}
             </div>
             <div className="btn-area">
             {/* <button className="Addbtn" onClick={this.addUser}>추가하기</button>
