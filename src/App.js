@@ -36,10 +36,22 @@ class App extends React.Component {
 
   updateName = (e) => {
     const nameId = e.target.id;
+    const userphone = e.target.nextSibling.innerText;
 
     nameValue = nameId;
 
-    
+    //fetch('/api/name/update').then(req => data: {Name: nameId, Phone: userphone});
+
+    // const userNameUpdate = (nameId, userphone) => ({
+    //   request: {
+    //     url: '/api/name/update',
+    //     method: 'put',
+    //     data: {Name: nameId, Phone: userphone}
+    //   }
+    // });
+
+  
+
 
 
     this.setState(state => ({
