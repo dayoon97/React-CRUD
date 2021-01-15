@@ -2,15 +2,20 @@ import React from 'react';
 import './App.css';
 
 var nameValue = 0;
+let userphone = "";
+let nameId = ""; 
+let a = "";
 
 class App extends React.Component {
 
   constructor() {
     super();
     this.state = {
-      users:[]
+      users:[],
+      userphone: '',
+      nameId: ''
     };
-    this.addUser = this.addUser.bind(this);
+    this.upName = this.upName.bind(this);
   }
 
   componentDidMount = () => {
@@ -23,42 +28,57 @@ class App extends React.Component {
       });
   };
 
-  addUser = () => {
-    this.setState(state => ({
-      addname: <div className="name-input"><input type="text" placeholder="이름을 입력하세요" size="5"/></div>,
-      //addname: <div className="name-input"><TextField required id="standard-required" label="Required" defaultValue="이름을 입력하세요" /></div>,
-      addphone: <div className="phone-input"><input type="phone" placeholder="전화번호" size="10"/></div> ,
-      addgender: <select><option>F</option><option>M</option></select>,
-      sendBtn: <button className="submit-btn">전송하기</button>
+  updateName = (e, a) => {
+    userphone = "";
+    nameId = e.target.id;
 
-    }));
-  }
+    this.componentDidMount(userphone, nameId);
 
-  updateName = (e) => {
-    const nameId = e.target.id;
-    const userphone = e.target.nextSibling.innerText;
+    e.target.nextSibling.innerText === null? userphone = "암것도없음" : userphone = e.target.nextSibling.innerText;
 
     nameValue = nameId;
 
-    //fetch('/api/name/update').then(req => data: {Name: nameId, Phone: userphone});
-
-    // const userNameUpdate = (nameId, userphone) => ({
-    //   request: {
-    //     url: '/api/name/update',
-    //     method: 'put',
-    //     data: {Name: nameId, Phone: userphone}
-    //   }
-    // });
-
-  
-
-
 
     this.setState(state => ({
-      setName: <div className="user-name" id={nameId}><span className="name-list"><input type="text" size="5" className="nameinput"/></span></div>
+      setName: <div className="user-name" id={nameId}><span className="name-list"><input type="text" id="newName" size="5" className="nameinput" onKeyUp={this.enterkey}/></span></div>
     }));
     
   }
+
+
+  enterkey(e) {
+    if(window.event.keyCode === 13) {
+      a = document.getElementById("newName").value;
+      console.log(nameId);
+      console.log(userphone);
+      console.log(a);
+      this.upName();
+
+    }
+  }
+
+  upName = () => {
+    fetch('/modify/name', {
+      method: 'put',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        Name: nameId,
+        newName: a,
+        Phone: userphone,
+        completed: false,
+        }),
+      })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
+  } ;
+
+
+
+  
 
 
 
@@ -84,9 +104,6 @@ class App extends React.Component {
             {user}
             </div>
             <div className="btn-area">
-            {/* <button className="Addbtn" onClick={this.addUser}>추가하기</button>
-            <button className="Delbtn">삭제하기</button>
-            <button className="Updbtn">수정하기</button> */}
             </div>
             <div className="add-area">{this.state.addname}{this.state.addphone}{this.state.addgender}</div>
             <div className="submit-area">{this.state.sendBtn}</div>
