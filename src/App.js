@@ -5,6 +5,7 @@ var nameValue = 0;
 let userphone = "";
 let nameId = ""; 
 let a = "";
+let oldName = "";
 
 class App extends React.Component {
 
@@ -15,7 +16,6 @@ class App extends React.Component {
       userphone: '',
       nameId: ''
     };
-    this.upName = this.upName.bind(this);
   }
 
   componentDidMount = () => {
@@ -28,16 +28,21 @@ class App extends React.Component {
       });
   };
 
-  updateName = (e, a) => {
+  updateName = (e) => {
     userphone = "";
     nameId = e.target.id;
 
-    this.componentDidMount(userphone, nameId);
+    console.log(nameId);
+    console.log(oldName);
 
-    e.target.nextSibling.innerText === null? userphone = "암것도없음" : userphone = e.target.nextSibling.innerText;
+    if(!nameId === null || !nameId === ""){
+      userphone = nameId.nextSibling.innerText;
+      oldName = document.querySelector("#" + nameId).children[0].innerText;
+      console.log(userphone);
+      console.log(oldName);
+    }
 
     nameValue = nameId;
-
 
     this.setState(state => ({
       setName: <div className="user-name" id={nameId}><span className="name-list"><input type="text" id="newName" size="5" className="nameinput" onKeyUp={this.enterkey}/></span></div>
@@ -46,40 +51,29 @@ class App extends React.Component {
   }
 
 
-  enterkey(e) {
-    if(window.event.keyCode === 13) {
-      a = document.getElementById("newName").value;
-      console.log(nameId);
-      console.log(userphone);
-      console.log(a);
-      this.upName();
+  // componentDidUpdate = () => {
+  //   console.log("함수실행");
+  //   console.log("입력한 이름 : ", a);
+  //   console.log("폰 : ", userphone);
+  //   console.log("유저아이디 : ", nameId);
 
-    }
-  }
-
-  upName = () => {
-    fetch('/modify/name', {
-      method: 'put',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        Name: nameId,
-        newName: a,
-        Phone: userphone,
-        completed: false,
-        }),
-      })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-      });
-  } ;
-
-
-
-  
-
+  //   fetch('/modify/name', {
+  //     method: 'put',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({
+  //       Name: nameId,
+  //       newName: a,
+  //       Phone: userphone,
+  //       completed: false,
+  //       }),
+  //     })
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // }
 
 
   render() {
