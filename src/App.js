@@ -79,36 +79,6 @@ import ChangeName from './ChangeName.js';
 //   // }
 
 
-//   render() {
-    
-//     const userName1 = this.state.setName;
-
-//     const user = this.state.users.map((item, index) => {
-//       return <div className="user-area"><div className="user-no" key={index}><span className="cir">{item.No}</span></div>
-//       {nameValue === "name" + (index + 1) ? userName1 : <div className="user-name" id={"name" + (index + 1)} onClick={this.updateName}><span className="name-list">{item.Name}</span></div> }
-
-//       <div className="user-phone">{item.Phone}</div><div className="user-gender">{item.Gender === 'F' ? '👩' : '👨' }</div></div>
-//     });
-
-    
-
-
-//     return (
-//         <div className="App">
-//           <div className="title-area"><h1>ReactJS CRUD</h1></div>
-//           <div className="cont-area">
-//           <div className="tbl-area">
-//             {user}
-//             </div>
-//             <div className="btn-area">
-//             </div>
-//             <div className="add-area">{this.state.addname}{this.state.addphone}{this.state.addgender}</div>
-//             <div className="submit-area">{this.state.sendBtn}</div>
-//             </div>
-//         </div>
-//     );
-//   };
-// }
 
 
 const App = () => {
