@@ -15,30 +15,24 @@ const connection = mysql.createConnection({
   port: 3306
 });
 
-//router.get('/modify/name');
-
 connection.connect();
 
-// connection.query('update node_db.`member` set Name = ? where Name = ? and Phone = ?', [req.params.newName, req.params.name, req.params.phone], (error, rows, fields) => {
-//         if (error) throw error;
-//         console.log("성공");
-//         router.put('/name', (req, res)=>res.json({rows}));
-//       });
+let newName = '';
+let oldName = '';
 
-router.put('/name', function(req, res) {
-    //let name = req.params.Name;
-    let newName = req.params.newName;
-    let oldName = req.params.oldName;
-    //let phone = req.params.phone;
-  
-    console.log(newName);
-    console.log(oldName);
-//   connection.query('update node_db.`member` set Name = ? where Name = ? and Phone = ?', [req.params.newName, req.params.name, req.params.phone], (error, rows, fields) => {
-//     if (error) throw error;
-//     console.log("성공");
-//       //res.render()
-//   });
+
+router.put('/modify/name', function(req, res){
+  newName = req.body.newName;
+  oldName = req.body.oldName;
+  connection.query('update node_db.`member` set Name = ' + connection.escape(newName) +  'where Name =' + connection.escape(oldName), (error, rows, fields) => {
+    if(error){
+      console.log("error: ", error);
+      res.status(500).send('Internal Server Error222');
+    } else {
+      console.log("success!");
+      res.json({rows});
+      console.log(rows);
+    }
+  });
 });
 
-
-connection.end();

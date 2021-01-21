@@ -4,11 +4,12 @@ const app = express();
 const bodyParser = require('body-parser');
 const port =process.env.PORT || 3001;
 const indexRouter = require('./routes/index');
-
+const userRouter = require('./routes/users');
 // app.use(cors());
 
 app.use(bodyParser.json());
 app.use('/api', indexRouter); // app.use('/api', (req, res)=> res.json({username:'bryan'}));
+app.use('/api', userRouter);
 
 app.use(function(err, req, res, next){
     res.render('error', {

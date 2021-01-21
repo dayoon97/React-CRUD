@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 
 let nameValue = '';
+let oldName = '';
 
 const ChangeName = () => {
     const [nameId, setNameId] = useState('');
@@ -21,11 +22,12 @@ const ChangeName = () => {
   
     const onClickName = e => {
       const nameId = e.target.parentNode.id;
+      oldName = e.target.innerText;
+      console.log("이름: ", oldName);
       console.log("아이디: ", nameId);
 
       nameValue = nameId;
 
-      setUserName(<div className="user-name" id={nameId}><span className="name-list"><input type="text" id="newName" size="5" className="nameinput" onKeyUp={enterEvent}/></span></div>);
     };
 
     const enterEvent = e => {
@@ -33,10 +35,10 @@ const ChangeName = () => {
       let newName = e.target.value;
 
       axios.put('http://localhost:3000/api/modify/name', {
-        params: {newName: newName, oldName: nameValue}
+        newName: newName, oldName: oldName
       })
       .then(function (response){
-        console.log(response);
+        window.location.reload();
       })
       .catch(function(error) {
         console.log("오류");
