@@ -22,36 +22,12 @@ connection.query('SELECT * from Node_db.member', (error, rows, fields) => {
   router.get('/list', (req, res)=>res.json({rows}));
 });
 
-// connection.query('update node_db.`member` set Name = ? where Name = ? and Phone = ?', [newName, name, phone], (error, rows, fields) => {
-//   if (error) throw error;
-//   router.put('/name/:newName/:name/:phone', function(req, res){
-// });
-
-
-router.put('/name/', function(req, res){
-    //let name = req.params.Name;
-    //let newName = req.params.newName;
-    //let phone = req.params.phone;
-  
-    console.log(req.params.newName);
-  connection.query('update node_db.`member` set Name = ? where Name = ? and Phone = ?', [req.params.newName, req.params.name, req.params.phone], (error, rows, fields) => {
-    if (error) throw error;
-    console.log("성공");
-      //res.render()
-  });
+router.put('/modify/name', function(req, res){
+  let newName = req.params.newName;
+  let oldName = req.params.oldName;
+  console.log("새로 입력한 이름: ", newName);
+  console.log("예전 이름: ", oldName);
 });
-
-
-
-// connection.query('update node_db.`member` set Name = ? where Name = ? and Phone = ?', [req.params.newName, req.params.name, req.params.phone], (error, rows, fields) => {
-//   console.log("연결");
-//   //router.post('/name', (req, res) => const newName);
-//   if (error) throw error;
-//   router.put('/name/:newName/:name/:phone', function(req, res){
-//       console.log("ㅇㅋㅎㅇㅎㅋ");
-//   });
-//  });
-
 
 
 connection.end();
