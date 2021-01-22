@@ -30,8 +30,8 @@ router.put('/modify/name', function(req, res){
       res.status(500).send('Internal Server Error222');
     } else {
       console.log("success!");
-      res.json({rows});
-      console.log(rows);
+      res.json(rows.changedRows);
+      console.log(rows.changedRows);
     }
   });
 });

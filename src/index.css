@@ -18,6 +18,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(252, 252, 252);
+  cursor:url('moon.cur'), auto;
 }
 
 code {

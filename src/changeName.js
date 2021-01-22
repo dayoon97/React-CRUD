@@ -27,28 +27,39 @@ const ChangeName = () => {
       console.log("아이디: ", nameId);
 
       nameValue = nameId;
-
     };
 
     const enterEvent = e => {
-      console.log(e.target.value);
       let newName = e.target.value;
-
-      axios.put('http://localhost:3000/api/modify/name', {
+      console.log(newName);
+      if(e.keyCode === 13){
+        axios.put('http://localhost:3000/api/modify/name', {
         newName: newName, oldName: oldName
       })
       .then(function (response){
-        window.location.reload();
+        console.log(response.data);
+        if(response.data === 1) {
+          axios.get('http://localhost:3000/api/list')
+          .then(function (response) {
+            // handle success
+            console.log(response);
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error);
+          })
+          .then(function () {
+            // always executed
+          });
+        } else {
+          alert("오류");
+        }
       })
       .catch(function(error) {
         console.log("오류");
       });
+      }
     };
-
-    // const nameList = users.map((user, index) => (user.Name));
-    // const phoneList = users.map((user, index) => user.Phone);
-    // const noList = users.map((user, index) => user.No);
-    // const genderList = users.map((user, index) => user.gender);
 
     return (
     <div className="App">
